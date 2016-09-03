@@ -1,0 +1,87 @@
+$orange: #fd6b01
+$green: #659f2e
+
+$grey: #919191
+$dark-grey : #6d6d6d
+
+@mixin vertical-align($proc)
+  margin-top: $proc
+  margin-bottom: $proc
+
+@font-face
+  font-family: Streetscript
+  src: local("Streetscript"), url( ../fonts/StreetscriptRedux.otf )
+
+@font-face
+  font-family: Roboto
+  src: local("Roboto"), url( ../fonts/Roboto-Regular.ttf )
+
+*
+  box-sizing: border-box
+
+body
+  font-family: Roboto, sans-serif
+
+.logo
+  margin: 15px 0 15px 15px
+
+.navbar
+  margin-bottom: 0
+
+.navbar-header a
+  color: $dark-grey
+  text-decoration: none
+
+#logo-text
+  margin-left: 25px
+  p:first-child
+    margin-bottom: 0
+    color: $orange
+    font-size: 50px
+    font-family: Streetscript, sans-serif
+
+.contacts
+  margin-right: 75px
+  div
+    @include vertical-align(9%)
+
+.platform a
+  @include vertical-align(25%)
+  color: black
+  padding: 0
+  border-radius: 50%
+  i
+    padding: 10px 12px
+    border-radius: 100px
+    box-shadow: 0 0 2px #888
+  &:hover
+    background-color: white !important
+    i
+      box-shadow: 0 0 2px black
+      background-color: black
+      color: white
+
+.log-out
+  margin-left: 50px
+  button
+    color: #fd6b01
+    background-color: white
+    font-size: 18px
+    padding: 5px 30px
+    border: 1px solid #fd6b01
+    border-radius: 20px
+    @include vertical-align(25%)
+    &:hover
+      background: #fd6b01
+      border: 1px solid #fd6b01
+      color: #ffffff
+
+
+.content
+  height: 1500px   //TODO: remove
+  background: url(../img/background-top.jpg) no-repeat top, url(../img/background-bottom.jpg) no-repeat bottom
+  background-size: 100%
+
+.margin-100
+  margin-top: 100px
+
