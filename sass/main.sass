@@ -1,27 +1,110 @@
 $orange: #fd6b01
 $green: #659f2e
 
-$grey: #919191
+$grey: #eeeeee
 $dark-grey : #6d6d6d
 
 @mixin vertical-align($proc)
   margin-top: $proc
   margin-bottom: $proc
 
+@mixin font-gradient($from, $to, $dir)
+  background: -webkit-linear-gradient($dir, $from, $to)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+
+@mixin button($color, $background-color, $hover-color, $hover-back-color)
+  color: $color
+  background-color: $background-color
+  font-size: 18px
+  padding: 5px 30px
+  border: 1px solid $color
+  border-radius: 20px
+  &:hover
+    background: $hover-back-color
+    border: 1px solid $hover-back-color
+    color: $hover-color
+
+@mixin package($color)
+  background-color: white
+  width: 100%
+  border: solid $color 2px
+  th
+    text-transform: uppercase
+    color: white
+    padding: 35px 0
+    background-color: $color
+    font-family: Roboto-Medium, sans-serif
+    font-size: 30px
+    font-weight: normal
+  td
+    border-bottom: solid #dddddd 1px
+
+  .cost
+    font-family: Roboto-Light, sans-serif
+    font-size: 26px
+    margin-bottom: 0
+    text-align: center
+    span
+      font-family: Roboto-Medium, sans-serif
+      color: $color
+  .buy
+    @include button($dark-grey, white, white, $color)
+
+  .more-info
+    @include button($color, white, white, $color)
+    margin-bottom: 40px
+
+@mixin platform($color, $shadow-color)
+  a
+    @include vertical-align(25%)
+    color: $color
+    padding: 0
+    border-radius: 50%
+    i
+      padding: 10px 12px
+      border-radius: 100px
+      box-shadow: 0 0 2px $shadow-color
+    &:hover
+      background-color: white !important
+      i
+        box-shadow: 0 0 2px $color
+        background-color: $color
+        color: white
+
+
 @font-face
   font-family: Streetscript
   src: local("Streetscript"), url( ../fonts/StreetscriptRedux.otf )
 
 @font-face
-  font-family: Roboto
-  src: local("Roboto"), url( ../fonts/Roboto-Regular.ttf )
+  font-family: Roboto-Regular
+  src: local("Roboto-Regular"), url( ../fonts/Roboto-Regular.ttf )
+  
+@font-face
+  font-family: Roboto-Light
+  src: local("Roboto-Light"), url( ../fonts/Roboto-Light.ttf )
+
+@font-face
+  font-family: Roboto-Medium
+  src: local("Roboto-Medium"), url( ../fonts/Roboto-Medium.ttf )
 
 *
   box-sizing: border-box
 
 body
-  font-family: Roboto, sans-serif
+  font-family: Roboto-Regular, sans-serif
 
+.top-minus-25
+  margin-top: -25px
+
+.margin-100
+  margin-top: 100px
+
+.clear
+  clear: both
+
+/* ----- HEADER ----- */
 .logo
   margin: 15px 0 15px 15px
 
@@ -40,48 +123,194 @@ body
     font-size: 50px
     font-family: Streetscript, sans-serif
 
+#logo-text-footer
+  margin: 5% 20px
+  p:first-child
+    margin-bottom: 0
+    color: $orange
+    font-size: 45px
+    font-family: Streetscript, sans-serif
+
+.contact
+  font-family: Roboto-Light, sans-serif
+  font-size: 18px
+
 .contacts
   margin-right: 75px
   div
     @include vertical-align(9%)
 
-.platform a
-  @include vertical-align(25%)
-  color: black
-  padding: 0
-  border-radius: 50%
-  i
-    padding: 10px 12px
-    border-radius: 100px
-    box-shadow: 0 0 2px #888
-  &:hover
-    background-color: white !important
-    i
-      box-shadow: 0 0 2px black
-      background-color: black
-      color: white
+.platform
+  @include platform(black, #888)
 
 .log-out
   margin-left: 50px
   button
-    color: #fd6b01
-    background-color: white
-    font-size: 18px
-    padding: 5px 30px
-    border: 1px solid #fd6b01
-    border-radius: 20px
+    @include button($orange, white, white, $orange)
     @include vertical-align(25%)
-    &:hover
-      background: #fd6b01
-      border: 1px solid #fd6b01
-      color: #ffffff
 
 
+// ----- CONTENT -----
 .content
-  height: 1500px   //TODO: remove
   background: url(../img/background-top.jpg) no-repeat top, url(../img/background-bottom.jpg) no-repeat bottom
   background-size: 100%
 
-.margin-100
+.gradient
+  @include font-gradient($orange, $green, left)
+
+.beauty
+  font-size: 50px
+  font-family: Streetscript, sans-serif
+
+.black
+  font-size: 18px
+
+.grey
+  font-family: Roboto-Light, sans-serif
+  font-size: 17px
+
+.sign-up
+  color: white
+  background-color: $orange
+  font-size: 18px
+  padding: 15px 40px
+  border: 1px solid $orange
+  border-radius: 50px
+  &:hover
+    color: $orange
+    background-color: white
+
+.title-us
+  font-size: 30px
+  font-family: Roboto-Medium, sans-serif
+
+.rope
   margin-top: 100px
+  margin-bottom: 80px
+  background-image: url(../img/Rope1.png)
+  background-position: top center
+  background-repeat: no-repeat
+
+
+// ----- ADVANTAGES -----
+#girl
+  margin-top: 75px
+
+#leptop1
+  margin-bottom: 70px
+
+#attention
+  padding: 0 10px 0 40px
+  margin-bottom: 50px
+
+#auto-sign
+  margin-top: 50px
+  padding: 0 70px
+
+#bigger
+  padding-left: 50px
+
+#phone2
+  margin-top: 140px
+  float: right
+
+#phone3
+  float: right
+
+#auto-notification
+  margin-top: 30px
+  margin-left: 50px
+
+
+/* ----- HOW IT WORKS ----- */
+
+.how-works
+  background-color: $grey
+
+#how-works-title
+  margin: 35px 0
+
+.heading
+  color: $orange
+  font-size: 22px
+
+.task-text
+  font-size: 17px
+  font-family: Roboto-Light, sans-serif
+
+
+/* ----- Package Master ----- */
+
+.package-master
+  margin-top: 65px
+  padding-bottom: 70px
+
+.package-orange
+  @include package($orange)
+
+.package-green
+  @include package($green)
+
+.buy-row
+  height: 120px
+  vertical-align: middle
+
+.evalute
+  text-align: center
+  font-size: 22px
+  margin: 50px 0 45px 0
+
+
+/* ------ FOOTER ----- */
+#navbar-footer
+  height: 100px !important
+  ul
+    transform: translateY(-50%)
+    top: 50%
+    position: relative
+    &:first-child
+      margin-left: 7%
+
+  a
+    padding: 10px
+
+.platform-orange
+  @include platform($orange, $orange)
+
+
+@mixin transition($pos, $sec)
+  -webkit-transition: $pos $sec
+  -moz-transition: $pos $sec
+  -ms-transition: $pos $sec
+  -o-transition: $pos $sec
+  transition: $pos $sec
+
+
+.skin-nav
+  @include transition(right, 0.9s)
+  border-radius: 10px 0 0 10px
+  background-color: $grey
+  position: fixed
+  right: -215px
+  top: 135px
+  z-index: 9999
+  display: flex
+  justify-content: center /* align horizontal */
+  align-items: center
+  a
+    padding: 5px 10px 10px 10px
+    font-size: 26px
+    color: #fff
+    text-decoration: none
+    //@include transition(all, 1.0s)
+    span
+      vertical-align: middle
+  &:hover
+    right: 0
+
+
+
+
+
+
 
